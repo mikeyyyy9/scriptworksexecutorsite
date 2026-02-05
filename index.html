@@ -136,11 +136,6 @@ h2 {
 /* ================= MOBILE FIXES ================= */
 @media (max-width: 768px) {
 
-    /* Hide Why Us ONLY on mobile */
-    .why-us {
-        display: none;
-    }
-
     .navbar {
         padding: 16px 20px;
     }
@@ -162,10 +157,12 @@ h2 {
         font-size: 18px;
     }
 
+    /* FIXED CTA SIZE ON MOBILE */
     .cta {
-        width: 100%;
-        max-width: 320px;
-        font-size: 18px;
+        padding: 12px 26px;
+        font-size: 16px;
+        border-radius: 8px;
+        margin-top: 28px;
     }
 
     section {
@@ -248,40 +245,31 @@ function resize() {
 window.addEventListener("resize", resize);
 resize();
 
-function createStars() {
-    stars = [];
-    for (let i = 0; i < STAR_COUNT; i++) {
-        stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            z: Math.random() * canvas.width
-        });
-    }
+for (let i = 0; i < STAR_COUNT; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        z: Math.random() * canvas.width
+    });
 }
-createStars();
 
 function animate() {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    for (const star of stars) {
-        star.z -= 2;
-        if (star.z <= 0) {
-            star.z = canvas.width;
-            star.x = Math.random() * canvas.width;
-            star.y = Math.random() * canvas.height;
-        }
+    for (const s of stars) {
+        s.z -= 2;
+        if (s.z <= 0) s.z = canvas.width;
 
-        const sx = (star.x - canvas.width / 2) * (canvas.width / star.z) + canvas.width / 2;
-        const sy = (star.y - canvas.height / 2) * (canvas.width / star.z) + canvas.height / 2;
-        const r = canvas.width / star.z;
+        const x = (s.x - canvas.width / 2) * (canvas.width / s.z) + canvas.width / 2;
+        const y = (s.y - canvas.height / 2) * (canvas.width / s.z) + canvas.height / 2;
+        const r = canvas.width / s.z;
 
         ctx.beginPath();
-        ctx.arc(sx, sy, r, 0, Math.PI * 2);
+        ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = "white";
         ctx.fill();
     }
-
     requestAnimationFrame(animate);
 }
 animate();
@@ -289,4 +277,3 @@ animate();
 
 </body>
 </html>
-
