@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ScriptWorks HQ</title>
+
+<style>
+/* ================= GLOBAL ================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================= STARFIELD ================= */
+#starfield {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Ensure content stays above background */
+body > *:not(#starfield) {
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.nav-links a {
+    margin-left: 40px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* ================= HERO ================= */
+.hero {
+    padding: 200px 60px 160px;
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.hero h1 {
+    font-size: 64px;
+}
+
+.hero p {
+    font-size: 22px;
+    opacity: 0.85;
+    margin-top: 20px;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 16px 40px;
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.25s;
+}
+
+.cta:hover {
+    transform: translateY(-3px);
+}
+
+/* ================= SECTIONS ================= */
+section {
+    max-width: 1100px;
+    margin: 120px auto;
+    padding: 20px 60px;
+}
+
+h2 {
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ================= GRIDS ================= */
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.trust-box, .testimonial-box {
+    padding: 30px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ================= TESTIMONIAL ================= */
+.testimonials {
+    text-align: center;
+}
+
+.testimonial-box {
+    font-style: italic;
+    padding: 40px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- STARFIELD -->
+<canvas id="starfield"></canvas>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="brand">ScriptWorksExe</div>
+    <div class="nav-links">
+        <a href="https://discord.gg/XtGjGHYyEW" target="_blank">Join Dc</a>
+        <a href="#trust">Why</a>
+        <a href="#trust">Why Us</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>ScriptWorks Executor</h1>
+    <p>Fast, Reliable Roblox executor</p>
+    <a class="cta" href="https://discord.gg/XtGjGHYyEW" target="_blank">
+        Join The Dc To Access
+    </a>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+    <h2>Why Use This Roblox Executor</h2>
+    <div class="trust-grid">
+        <div class="trust-box"><h3>Safety</h3><p>Won’t flag your antivirus due to our API.</p></div>
+        <div class="trust-box"><h3>Stability</h3><p>Fast, stable, keyless.</p></div>
+        <div class="trust-box"><h3>Support</h3><p>Experienced developers ready 24/7.</p></div>
+    </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonials">
+    <div class="testimonial-box">
+        “This is actually a good executor — for FREE. Join the DC.”
+    </div>
+</section>
+
+<!-- STARFIELD SCRIPT -->
+<script>
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+const STAR_COUNT = 300;
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+function createStars() {
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            z: Math.random() * canvas.width
+        });
+    }
+}
+createStars();
+
+function animate() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (const star of stars) {
+        star.z -= 2;
+        if (star.z <= 0) {
+            star.z = canvas.width;
+            star.x = Math.random() * canvas.width;
+            star.y = Math.random() * canvas.height;
+        }
+
+        const sx = (star.x - canvas.width / 2) * (canvas.width / star.z) + canvas.width / 2;
+        const sy = (star.y - canvas.height / 2) * (canvas.width / star.z) + canvas.height / 2;
+        const r = canvas.width / star.z;
+
+        ctx.beginPath();
+        ctx.arc(sx, sy, r, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
