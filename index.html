@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ScriptWorks HQ</title>
 
 <style>
 /* ================= GLOBAL ================= */
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -27,7 +32,7 @@ html, body {
     pointer-events: none;
 }
 
-/* Ensure content stays above background */
+/* Keep content above background */
 body > *:not(#starfield) {
     position: relative;
     z-index: 1;
@@ -39,10 +44,11 @@ body > *:not(#starfield) {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 22px 60px;
+    padding: 18px 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    backdrop-filter: blur(10px);
 }
 
 .brand {
@@ -51,7 +57,7 @@ body > *:not(#starfield) {
 }
 
 .nav-links a {
-    margin-left: 40px;
+    margin-left: 30px;
     color: white;
     text-decoration: none;
     font-size: 16px;
@@ -59,7 +65,7 @@ body > *:not(#starfield) {
 
 /* ================= HERO ================= */
 .hero {
-    padding: 200px 60px 160px;
+    padding: 180px 40px 140px;
     text-align: center;
     max-width: 900px;
     margin: auto;
@@ -115,6 +121,7 @@ h2 {
     padding: 30px;
     border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.02);
 }
 
 /* ================= TESTIMONIAL ================= */
@@ -127,14 +134,54 @@ h2 {
     padding: 40px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE ================= */
 @media (max-width: 900px) {
-    .trust-grid {
-        grid-template-columns: 1fr;
+    .navbar {
+        flex-direction: column;
+        padding: 16px 20px;
+        gap: 12px;
+    }
+
+    .nav-links a {
+        margin: 0 12px;
+        font-size: 15px;
+    }
+
+    .hero {
+        padding: 160px 20px 120px;
     }
 
     .hero h1 {
         font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .cta {
+        width: 100%;
+        max-width: 320px;
+        font-size: 18px;
+        padding: 14px 20px;
+    }
+
+    section {
+        margin: 80px auto;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .trust-box, .testimonial-box {
+        padding: 24px;
     }
 }
 </style>
@@ -149,7 +196,7 @@ h2 {
 <div class="navbar">
     <div class="brand">ScriptWorksExe</div>
     <div class="nav-links">
-        <a href="https://discord.gg/XtGjGHYyEW" target="_blank">Join Dc</a>
+        <a href="https://discord.gg/XtGjGHYyEW" target="_blank">Join DC</a>
         <a href="#trust">Why</a>
         <a href="#trust">Why Us</a>
     </div>
@@ -160,7 +207,7 @@ h2 {
     <h1>ScriptWorks Executor</h1>
     <p>Fast, Reliable Roblox executor</p>
     <a class="cta" href="https://discord.gg/XtGjGHYyEW" target="_blank">
-        Join The Dc To Access
+        Join The DC To Access
     </a>
 </section>
 
