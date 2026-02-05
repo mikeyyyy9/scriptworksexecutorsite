@@ -44,9 +44,19 @@ body > *:not(#starfield) {
     align-items: center;
 }
 
+/* 🔥 BRAND WITH ICON */
 .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 22px;
     font-weight: 700;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+    margin-left: -8px;
 }
 
 .nav-links a {
@@ -147,7 +157,6 @@ h2 {
         font-size: 16px;
     }
 
-    /* 🔥 ACTUAL MOBILE CTA FIX */
     .cta {
         padding: 10px 20px;
         font-size: 14px;
@@ -176,7 +185,10 @@ h2 {
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <div class="brand">ScriptWorksExe</div>
+    <div class="brand">
+        <img src="Rocket.png" alt="Rocket">
+        ScriptWorksExe
+    </div>
     <div class="nav-links">
         <a href="https://discord.gg/XtGjGHYyEW" target="_blank">Join DC</a>
         <a href="#trust">Why</a>
