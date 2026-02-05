@@ -11,7 +11,6 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     background: black;
     color: white;
     font-family: 'Segoe UI', sans-serif;
@@ -28,7 +27,6 @@ html, body {
     pointer-events: none;
 }
 
-/* Keep content above background */
 body > *:not(#starfield) {
     position: relative;
     z-index: 1;
@@ -40,11 +38,10 @@ body > *:not(#starfield) {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 22px 60px;
+    padding: 20px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-sizing: border-box;
 }
 
 .brand {
@@ -53,72 +50,65 @@ body > *:not(#starfield) {
 }
 
 .nav-links a {
-    margin-left: 40px;
+    margin-left: 36px;
     color: white;
     text-decoration: none;
-    font-size: 16px;
-    white-space: nowrap;
+    font-size: 15px;
 }
 
 /* ================= HERO ================= */
 .hero {
-    padding: 200px 60px 140px;
+    padding: 190px 24px 120px;
     text-align: center;
     max-width: 900px;
     margin: auto;
 }
 
 .hero h1 {
-    font-size: 64px;
+    font-size: 60px;
     line-height: 1.1;
 }
 
 .hero p {
     font-size: 22px;
     opacity: 0.85;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
 .cta {
     display: inline-block;
-    margin-top: 40px;
-    padding: 16px 40px;
+    margin-top: 36px;
+    padding: 16px 38px;
+    font-size: 20px;
     border: 1px solid rgba(255,255,255,0.5);
     border-radius: 10px;
     color: white;
     text-decoration: none;
-    font-size: 20px;
-    transition: 0.25s;
-}
-
-.cta:hover {
-    transform: translateY(-3px);
 }
 
 /* ================= SECTIONS ================= */
 section {
     max-width: 1100px;
-    margin: 120px auto;
-    padding: 20px 60px;
-    box-sizing: border-box;
+    margin: 110px auto;
+    padding: 0 24px;
 }
 
 h2 {
-    font-size: 42px;
+    font-size: 40px;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 36px;
 }
 
-/* ================= TRUST GRID ================= */
+/* ================= TRUST ================= */
 .trust-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 36px;
 }
 
 .trust-box,
 .testimonial-box {
-    padding: 30px;
+    padding: 28px;
     border-radius: 14px;
     border: 1px solid rgba(255,255,255,0.2);
 }
@@ -130,48 +120,47 @@ h2 {
 
 .testimonial-box {
     font-style: italic;
-    padding: 40px;
+    padding: 36px;
 }
 
-/* ================= MOBILE FIXES ================= */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
     .navbar {
-        padding: 16px 20px;
+        padding: 14px 18px;
     }
 
     .nav-links a {
-        margin-left: 20px;
+        margin-left: 18px;
         font-size: 14px;
     }
 
     .hero {
-        padding: 140px 20px 100px;
+        padding: 130px 18px 90px;
     }
 
     .hero h1 {
-        font-size: 36px;
+        font-size: 34px;
     }
 
     .hero p {
-        font-size: 18px;
-    }
-
-    /* FIXED CTA SIZE ON MOBILE */
-    .cta {
-        padding: 12px 26px;
         font-size: 16px;
-        border-radius: 8px;
-        margin-top: 28px;
     }
 
-    section {
-        padding: 20px;
-        margin: 80px auto;
+    /* 🔥 ACTUAL MOBILE CTA FIX */
+    .cta {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 6px;
+        margin-top: 22px;
     }
 
     h2 {
-        font-size: 32px;
+        font-size: 30px;
+    }
+
+    section {
+        margin: 80px auto;
     }
 
     .trust-grid {
@@ -183,7 +172,6 @@ h2 {
 
 <body>
 
-<!-- STARFIELD -->
 <canvas id="starfield"></canvas>
 
 <!-- NAVBAR -->
@@ -230,7 +218,6 @@ h2 {
     </div>
 </section>
 
-<!-- STARFIELD SCRIPT -->
 <script>
 const canvas = document.getElementById("starfield");
 const ctx = canvas.getContext("2d");
